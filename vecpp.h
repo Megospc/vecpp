@@ -8,6 +8,255 @@
 #include <cmath>
 
 namespace vecpp {
+    struct bvec2 {
+        bool x, y;
+
+        bvec2() {
+            x = 0.0, y = 0.0;
+        }
+        bvec2(bool x, bool y) {
+            this->x = x, this->y = y;
+        }
+        bvec2(bool v) {
+            x = v, y = v;
+        }
+        bvec2(bvec2* v) {
+            x = v->x, y = v->y;
+        }
+
+        bvec2 operator!() {
+            return bvec2(-x, -y);
+        }
+        
+        bool operator[](int i) {
+            switch (i) {
+                case 0: return x;
+                case 1: return y;
+                default: return false;
+            }
+        }
+        
+        bool all() {
+            return x && y;
+        }
+        bool any() {
+            return x || y;
+        }
+
+        bvec2 operator==(bvec2 other) {
+            return bvec2(x == other.x, y == other.y);
+        }
+        bvec2 operator!=(bvec2 other) {
+            return bvec2(x != other.x, y != other.y);
+        }
+        bvec2 operator>(bvec2 other) {
+            return bvec2(x > other.x, y > other.y);
+        }
+        bvec2 operator<(bvec2 other) {
+            return bvec2(x < other.x, y < other.y);
+        }
+        bvec2 operator<=(bvec2 other) {
+            return bvec2(x <= other.x, y <= other.y);
+        }
+        bvec2 operator>=(bvec2 other) {
+            return bvec2(x >= other.x, y >= other.y);
+        }
+
+        bvec2 operator==(bool other) {
+            return bvec2(x == other, y == other);
+        }
+        bvec2 operator!=(bool other) {
+            return bvec2(x != other, y != other);
+        }
+        bvec2 operator>(bool other) {
+            return bvec2(x > other, y > other);
+        }
+        bvec2 operator<(bool other) {
+            return bvec2(x < other, y < other);
+        }
+        bvec2 operator<=(bool other) {
+            return bvec2(x <= other, y <= other);
+        }
+        bvec2 operator>=(bool other) {
+            return bvec2(x >= other, y >= other);
+        }
+    };
+
+    struct bvec3 {
+        bool x, y, z;
+
+        bvec3() {
+            x = 0.0, y = 0.0, z = 0.0;
+        }
+        bvec3(bool x, bool y, bool z) {
+            this->x = x, this->y = y, this->z = z;
+        }
+        bvec3(bvec2 a, bool b) {
+            x = a.x, y = a.y, z = b;
+        }
+        bvec3(bool a, bvec2 b) {
+            x = a, y = b.x, z = b.y;
+        }
+        bvec3(bool v) {
+            x = v, y = v, z = v;
+        }
+        bvec3(bvec3* v) {
+            x = v->x, y = v->y, z = v->z;
+        }
+
+        bvec3 operator!() {
+            return bvec3(-x, -y, -z);
+        }
+        
+        bool operator[](int i) {
+            switch (i) {
+                case 0: return x;
+                case 1: return y;
+                case 2: return z;
+                default: return false;
+            }
+        }
+        
+        bool all() {
+            return x && y && z;
+        }
+        bool any() {
+            return x || y || z;
+        }
+
+        bvec3 operator==(bvec3 other) {
+            return bvec3(x == other.x, y == other.y, z == other.z);
+        }
+        bvec3 operator!=(bvec3 other) {
+            return bvec3(x != other.x, y != other.y, z != other.z);
+        }
+        bvec3 operator>(bvec3 other) {
+            return bvec3(x > other.x, y > other.y, z > other.z);
+        }
+        bvec3 operator<(bvec3 other) {
+            return bvec3(x < other.x, y < other.y, z < other.z);
+        }
+        bvec3 operator<=(bvec3 other) {
+            return bvec3(x <= other.x, y <= other.y, z <= other.z);
+        }
+        bvec3 operator>=(bvec3 other) {
+            return bvec3(x >= other.x, y >= other.y, z >= other.z);
+        }
+
+        bvec3 operator==(bool other) {
+            return bvec3(x == other, y == other, z == other);
+        }
+        bvec3 operator!=(bool other) {
+            return bvec3(x != other, y != other, z != other);
+        }
+        bvec3 operator>(bool other) {
+            return bvec3(x > other, y > other, z > other);
+        }
+        bvec3 operator<(bool other) {
+            return bvec3(x < other, y < other, z < other);
+        }
+        bvec3 operator<=(bool other) {
+            return bvec3(x <= other, y <= other, z <= other);
+        }
+        bvec3 operator>=(bool other) {
+            return bvec3(x >= other, y >= other, z >= other);
+        }
+    };
+
+    struct bvec4 {
+        bool x, y, z, w;
+
+        bvec4() {
+            x = 0.0, y = 0.0, z = 0.0, w = 0.0;
+        }
+        bvec4(bool x, bool y, bool z, bool w) {
+            this->x = x, this->y = y, this->z = z, this->w = w;
+        }
+        bvec4(bvec3 a, bool b) {
+            x = a.x, y = a.y, z = a.z, w = b;
+        }
+        bvec4(bool a, bvec3 b) {
+            x = a, y = b.x, z = b.y, w = b.z;
+        }
+        bvec4(bvec2 a, bvec2 b) {
+            x = a.x, y = a.y, z = b.x, w = b.y;
+        }
+        bvec4(bvec2 a, bool b, bool c) {
+            x = a.x, y = a.y, z = b, w = c;
+        }
+        bvec4(bool a, bool b, bvec2 c) {
+            x = a, y = b, z = c.x, w = c.y;
+        }
+        bvec4(bool a, bvec2 b, bool c) {
+            x = a, y = b.x, z = b.y, w = c;
+        }
+        bvec4(bool v) {
+            x = v, y = v, z = v, w = v;
+        }
+        bvec4(bvec4* v) {
+            x = v->x, y = v->y, z = v->z, w = v->w;
+        }
+
+        bvec4 operator!() {
+            return bvec4(-x, -y, -z, -w);
+        }
+        
+        bool operator[](int i) {
+            switch (i) {
+                case 0: return x;
+                case 1: return y;
+                case 2: return z;
+                case 3: return w;
+                default: return false;
+            }
+        }
+        
+        bool all() {
+            return x && y && z && w;
+        }
+        bool any() {
+            return x || y || z || w;
+        }
+
+        bvec4 operator==(bvec4 other) {
+            return bvec4(x == other.x, y == other.y, z == other.z, w == other.w);
+        }
+        bvec4 operator!=(bvec4 other) {
+            return bvec4(x != other.x, y != other.y, z != other.z, w != other.w);
+        }
+        bvec4 operator>(bvec4 other) {
+            return bvec4(x > other.x, y > other.y, z > other.z, w > other.w);
+        }
+        bvec4 operator<(bvec4 other) {
+            return bvec4(x < other.x, y < other.y, z < other.z, w < other.w);
+        }
+        bvec4 operator<=(bvec4 other) {
+            return bvec4(x <= other.x, y <= other.y, z <= other.z, w <= other.w);
+        }
+        bvec4 operator>=(bvec4 other) {
+            return bvec4(x >= other.x, y >= other.y, z >= other.z, w >= other.w);
+        }
+
+        bvec4 operator==(bool other) {
+            return bvec4(x == other, y == other, z == other, w == other);
+        }
+        bvec4 operator!=(bool other) {
+            return bvec4(x != other, y != other, z != other, w != other);
+        }
+        bvec4 operator>(bool other) {
+            return bvec4(x > other, y > other, z > other, w > other);
+        }
+        bvec4 operator<(bool other) {
+            return bvec4(x < other, y < other, z < other, w < other);
+        }
+        bvec4 operator<=(bool other) {
+            return bvec4(x <= other, y <= other, z <= other, w <= other);
+        }
+        bvec4 operator>=(bool other) {
+            return bvec4(x >= other, y >= other, z >= other, w >= other);
+        }
+    };
+
     struct vec2 {
         float x, y;
         
@@ -104,6 +353,44 @@ namespace vecpp {
         }
         void operator/=(float other) {
             x /= other, y /= other;
+        }
+        
+        bvec2 operator==(vec2 other) {
+            return bvec2(x == other.x, y == other.y);
+        }
+        bvec2 operator!=(vec2 other) {
+            return bvec2(x != other.x, y != other.y);
+        }
+        bvec2 operator>(vec2 other) {
+            return bvec2(x > other.x, y > other.y);
+        }
+        bvec2 operator<(vec2 other) {
+            return bvec2(x < other.x, y < other.y);
+        }
+        bvec2 operator<=(vec2 other) {
+            return bvec2(x <= other.x, y <= other.y);
+        }
+        bvec2 operator>=(vec2 other) {
+            return bvec2(x >= other.x, y >= other.y);
+        }
+
+        bvec2 operator==(float other) {
+            return bvec2(x == other, y == other);
+        }
+        bvec2 operator!=(float other) {
+            return bvec2(x != other, y != other);
+        }
+        bvec2 operator>(float other) {
+            return bvec2(x > other, y > other);
+        }
+        bvec2 operator<(float other) {
+            return bvec2(x < other, y < other);
+        }
+        bvec2 operator<=(float other) {
+            return bvec2(x <= other, y <= other);
+        }
+        bvec2 operator>=(float other) {
+            return bvec2(x >= other, y >= other);
         }
     };
 
@@ -210,6 +497,44 @@ namespace vecpp {
         }
         void operator/=(float other) {
             x /= other, y /= other, z /= other;
+        }
+        
+        bvec3 operator==(vec3 other) {
+            return bvec3(x == other.x, y == other.y, z == other.z);
+        }
+        bvec3 operator!=(vec3 other) {
+            return bvec3(x != other.x, y != other.y, z != other.z);
+        }
+        bvec3 operator>(vec3 other) {
+            return bvec3(x > other.x, y > other.y, z > other.z);
+        }
+        bvec3 operator<(vec3 other) {
+            return bvec3(x < other.x, y < other.y, z < other.z);
+        }
+        bvec3 operator<=(vec3 other) {
+            return bvec3(x <= other.x, y <= other.y, z <= other.z);
+        }
+        bvec3 operator>=(vec3 other) {
+            return bvec3(x >= other.x, y >= other.y, z >= other.z);
+        }
+
+        bvec3 operator==(float other) {
+            return bvec3(x == other, y == other, z == other);
+        }
+        bvec3 operator!=(float other) {
+            return bvec3(x != other, y != other, z != other);
+        }
+        bvec3 operator>(float other) {
+            return bvec3(x > other, y > other, z > other);
+        }
+        bvec3 operator<(float other) {
+            return bvec3(x < other, y < other, z < other);
+        }
+        bvec3 operator<=(float other) {
+            return bvec3(x <= other, y <= other, z <= other);
+        }
+        bvec3 operator>=(float other) {
+            return bvec3(x >= other, y >= other, z >= other);
         }
     };
 
@@ -330,8 +655,46 @@ namespace vecpp {
         void operator/=(float other) {
             x /= other, y /= other, z /= other, w /= other;
         }
+        
+        bvec4 operator==(vec4 other) {
+            return bvec4(x == other.x, y == other.y, z == other.z, w == other.w);
+        }
+        bvec4 operator!=(vec4 other) {
+            return bvec4(x != other.x, y != other.y, z != other.z, w != other.w);
+        }
+        bvec4 operator>(vec4 other) {
+            return bvec4(x > other.x, y > other.y, z > other.z, w > other.w);
+        }
+        bvec4 operator<(vec4 other) {
+            return bvec4(x < other.x, y < other.y, z < other.z, w < other.w);
+        }
+        bvec4 operator<=(vec4 other) {
+            return bvec4(x <= other.x, y <= other.y, z <= other.z, w <= other.w);
+        }
+        bvec4 operator>=(vec4 other) {
+            return bvec4(x >= other.x, y >= other.y, z >= other.z, w >= other.w);
+        }
+
+        bvec4 operator==(float other) {
+            return bvec4(x == other, y == other, z == other, w == other);
+        }
+        bvec4 operator!=(float other) {
+            return bvec4(x != other, y != other, z != other, w != other);
+        }
+        bvec4 operator>(float other) {
+            return bvec4(x > other, y > other, z > other, w > other);
+        }
+        bvec4 operator<(float other) {
+            return bvec4(x < other, y < other, z < other, w < other);
+        }
+        bvec4 operator<=(float other) {
+            return bvec4(x <= other, y <= other, z <= other, w <= other);
+        }
+        bvec4 operator>=(float other) {
+            return bvec4(x >= other, y >= other, z >= other, w >= other);
+        }
     };
-    
+
     struct dvec2 {
         double x, y;
         
@@ -428,6 +791,44 @@ namespace vecpp {
         }
         void operator/=(double other) {
             x /= other, y /= other;
+        }
+        
+        bvec2 operator==(dvec2 other) {
+            return bvec2(x == other.x, y == other.y);
+        }
+        bvec2 operator!=(dvec2 other) {
+            return bvec2(x != other.x, y != other.y);
+        }
+        bvec2 operator>(dvec2 other) {
+            return bvec2(x > other.x, y > other.y);
+        }
+        bvec2 operator<(dvec2 other) {
+            return bvec2(x < other.x, y < other.y);
+        }
+        bvec2 operator<=(dvec2 other) {
+            return bvec2(x <= other.x, y <= other.y);
+        }
+        bvec2 operator>=(dvec2 other) {
+            return bvec2(x >= other.x, y >= other.y);
+        }
+
+        bvec2 operator==(double other) {
+            return bvec2(x == other, y == other);
+        }
+        bvec2 operator!=(double other) {
+            return bvec2(x != other, y != other);
+        }
+        bvec2 operator>(double other) {
+            return bvec2(x > other, y > other);
+        }
+        bvec2 operator<(double other) {
+            return bvec2(x < other, y < other);
+        }
+        bvec2 operator<=(double other) {
+            return bvec2(x <= other, y <= other);
+        }
+        bvec2 operator>=(double other) {
+            return bvec2(x >= other, y >= other);
         }
     };
 
@@ -534,6 +935,44 @@ namespace vecpp {
         }
         void operator/=(double other) {
             x /= other, y /= other, z /= other;
+        }
+        
+        bvec3 operator==(dvec3 other) {
+            return bvec3(x == other.x, y == other.y, z == other.z);
+        }
+        bvec3 operator!=(dvec3 other) {
+            return bvec3(x != other.x, y != other.y, z != other.z);
+        }
+        bvec3 operator>(dvec3 other) {
+            return bvec3(x > other.x, y > other.y, z > other.z);
+        }
+        bvec3 operator<(dvec3 other) {
+            return bvec3(x < other.x, y < other.y, z < other.z);
+        }
+        bvec3 operator<=(dvec3 other) {
+            return bvec3(x <= other.x, y <= other.y, z <= other.z);
+        }
+        bvec3 operator>=(dvec3 other) {
+            return bvec3(x >= other.x, y >= other.y, z >= other.z);
+        }
+
+        bvec3 operator==(double other) {
+            return bvec3(x == other, y == other, z == other);
+        }
+        bvec3 operator!=(double other) {
+            return bvec3(x != other, y != other, z != other);
+        }
+        bvec3 operator>(double other) {
+            return bvec3(x > other, y > other, z > other);
+        }
+        bvec3 operator<(double other) {
+            return bvec3(x < other, y < other, z < other);
+        }
+        bvec3 operator<=(double other) {
+            return bvec3(x <= other, y <= other, z <= other);
+        }
+        bvec3 operator>=(double other) {
+            return bvec3(x >= other, y >= other, z >= other);
         }
     };
 
@@ -654,5 +1093,63 @@ namespace vecpp {
         void operator/=(double other) {
             x /= other, y /= other, z /= other, w /= other;
         }
+        
+        bvec4 operator==(dvec4 other) {
+            return bvec4(x == other.x, y == other.y, z == other.z, w == other.w);
+        }
+        bvec4 operator!=(dvec4 other) {
+            return bvec4(x != other.x, y != other.y, z != other.z, w != other.w);
+        }
+        bvec4 operator>(dvec4 other) {
+            return bvec4(x > other.x, y > other.y, z > other.z, w > other.w);
+        }
+        bvec4 operator<(dvec4 other) {
+            return bvec4(x < other.x, y < other.y, z < other.z, w < other.w);
+        }
+        bvec4 operator<=(dvec4 other) {
+            return bvec4(x <= other.x, y <= other.y, z <= other.z, w <= other.w);
+        }
+        bvec4 operator>=(dvec4 other) {
+            return bvec4(x >= other.x, y >= other.y, z >= other.z, w >= other.w);
+        }
+
+        bvec4 operator==(double other) {
+            return bvec4(x == other, y == other, z == other, w == other);
+        }
+        bvec4 operator!=(double other) {
+            return bvec4(x != other, y != other, z != other, w != other);
+        }
+        bvec4 operator>(double other) {
+            return bvec4(x > other, y > other, z > other, w > other);
+        }
+        bvec4 operator<(double other) {
+            return bvec4(x < other, y < other, z < other, w < other);
+        }
+        bvec4 operator<=(double other) {
+            return bvec4(x <= other, y <= other, z <= other, w <= other);
+        }
+        bvec4 operator>=(double other) {
+            return bvec4(x >= other, y >= other, z >= other, w >= other);
+        }
     };
+
+    bool any(bvec2 v) {
+        return v.any();
+    }
+    bool any(bvec3 v) {
+        return v.any();
+    }
+    bool any(bvec4 v) {
+        return v.any();
+    }
+
+    bool all(bvec2 v) {
+        return v.all();
+    }
+    bool all(bvec3 v) {
+        return v.all();
+    }
+    bool all(bvec4 v) {
+        return v.all();
+    }
 }

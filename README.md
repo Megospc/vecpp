@@ -1,7 +1,7 @@
 # vecpp
 Library which adds vector types into C++.
 
-Version: 1.0.0 (22.04.2024)
+Version: 1.3.0 (23.04.2024)
 
 ## Example
 ```C++

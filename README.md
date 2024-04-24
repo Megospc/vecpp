@@ -21,7 +21,7 @@ int main() {
     std::cout << "myVec4's length: " << length << std::endl;
     
     myVec4 += 0.5; // Add 0.5 to any myVec4 bases
-    myVec4 *= vec4(1.0, 0.01, 1.0, 0.5); // Multiple vectors
+    myVec4 *= vec4(1.0, 0.01, 1.0, 0.5); // Multiply vectors
     
     std::cout << "myVec4: ";
     std::cout << "x=" << myVec4.x << ", "; // Get X basis
@@ -44,7 +44,7 @@ int main() {
     // myVec4.x = value.x
     // myVec4.w = value.y
 
-    myVec4.w *= -1.0; // Multiple X basis
+    myVec4.w *= -1.0; // Multiply X basis
     
     vec4 normalized1 = myVec4.normalize(); // Get normalized vector
     vec4 normalized2 = ~myVec4; // The same

@@ -12,7 +12,7 @@ Version: 1.7.3 (24.04.2024)
 using namespace vecpp;
 
 int main() {
-    vec2 myVec2 = vec2(1.0, 0.1); // Create a 2-beses-vector
+    vec2 myVec2 = vec2(1.0, 0.1); // Create a 2-bases-vector
     
     vec4 myVec4 = vec4(myVec2, 0.0, 0.8); // Use vector to create a new one
     
@@ -35,6 +35,8 @@ int main() {
     // child.x = myVec4.y
     // child.y = myVec4.w
     // child.z = myVec4.z
+
+    // You can also use another combinations of child bases, such as zxw, yx, wzxy etc.
 
     vec2 value = vec2(0.3, -1.0);
 

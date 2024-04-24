@@ -1,7 +1,7 @@
 # vecpp
 Library which adds vector types into C++.
 
-Version: 1.3.0 (23.04.2024)
+Version: 1.7.3 (24.04.2024)
 
 ## Example
 ```C++
@@ -20,7 +20,7 @@ int main() {
     
     std::cout << "myVec4's length: " << length << std::endl;
     
-    myVec4 += 0.5; // Add 0.5 to any myVec4 basises
+    myVec4 += 0.5; // Add 0.5 to any myVec4 bases
     myVec4 *= vec4(1.0, 0.01, 1.0, 0.5); // Multiple vectors
     
     std::cout << "myVec4: ";
@@ -28,9 +28,23 @@ int main() {
     std::cout << "y=" << myVec4.y << ", ";
     std::cout << "z=" << myVec4[2] << ", "; // Or like this
     std::cout << "w=" << myVec4.w << std::endl;
+
+    vec3 child = myVec4.ywz(); // Get child vector
+    // child.x = myVec4.y
+    // child.y = myVec4.w
+    // child.z = myVec4.z
+
+    vec2 value = vec2(0.3, -1.0);
+
+    myVec4.xw(value); // Set child vector
+    // vector.x = value.x
+    // vector.w = value.y
     
     vec4 normalized1 = myVec4.normalize(); // Get normalized vector
-    vec4 normalized2 = ~myVec4; // Same as normalized1
+    vec4 normalized2 = ~myVec4; // The same
+
+    if (all(myVec4 > 0.0)) std::cout << "All myVec4 bases are greater than 0.0" << std::endl;
+    if (!any(myVec2 < 0.0)) std::cout << "myVec2 has no basis less than 0.0" << std::endl;
     
     // And double precision...
     dvec3 myDoubleVec = dvec3(0.1, 23.0, 4.0);
